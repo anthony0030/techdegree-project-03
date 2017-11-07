@@ -16,6 +16,12 @@
 		"oAP": "\/docs\/.gitignore",
 		"oF": 1
 		},
+	"\/docs": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "\/docs\/docs",
+		"oF": 0
+		},
 	"\/mockups": {
 		"ft": 65536,
 		"oA": 1,
@@ -39,6 +45,19 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"\/source\/css\/_debug.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/docs\/css\/_debug.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
 		},
 	"\/source\/css\/styles.sass": {
 		"aP": 0,
