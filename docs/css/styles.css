@@ -1,14 +1,175 @@
+html {
+  font-family: 'Merriweather', serif; }
+
+body,
+fieldset {
+  display: flex; }
+
+fieldset.newletter {
+  display: block; }
+
+body {
+  flex-direction: column;
+  min-height: 100vh; }
+
+header {
+  background-color: #2d3945;
+  text-align: center;
+  box-size: content-box; }
+  header h1 {
+    color: white;
+    margin: 25px auto;
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: uppercase; }
+
+footer {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  color: #b7bcbf;
+  font-size: 14px;
+  background-color: #2d3945; }
+
+input,
+fieldset {
+  border: 0; }
+
+fieldset {
+  padding: 5px 0; }
+
+legend {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  color: #2d3945; }
+
+div.more_info {
+  margin-top: 30px; }
+
+label {
+  padding-bottom: 15px;
+  color: #55687a; }
+
+label[for="more_info"] {
+  margin-top: 10px; }
+
+textarea#more_info,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  padding-left: 10px;
+  width: 100%;
+  border-radius: 4px;
+  height: 50px;
+  background-color: #eee;
+  border: 0;
+  box-sizing: border-box;
+  border: 2px solid transparent; }
+
+textarea#more_info:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+  transition: border 0.5s ease;
+  border: 2px solid #46698b;
+  outline: none; }
+
+select {
+  color: #b7bcbf; }
+
+option[invalid] {
+  opacity: 0.4; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 10px 15px 10px 1px; }
+
+input#zip {
+  width: 50%; }
+
+input#name::-webkit-input-placeholder,
+input#email::-webkit-input-placeholder {
+  text-align: right;
+  padding-right: 20px; }
+
+section.intro {
+  text-align: center;
+  border-bottom: 5px solid #2d3945;
+  margin-bottom: 2px;
+  padding-bottom: 40px; }
+  section.intro p {
+    color: #b7bcbf; }
+  section.intro h2 {
+    color: #2d3945;
+    font-weight: bold;
+    margin-top: 30px; }
+
+section.newletter h3 {
+  font-size: 16px;
+  font-weight: normal;
+  color: #55687a; }
+
+section.newletter h3:first-of-type {
+  margin-top: 0; }
+
+section.newletter,
+section.contact_info {
+  border-top: 2px solid #2d3945;
+  padding: 30px 0; }
+
+section.intro,
+form {
+  width: 90%;
+  margin: 4px auto; }
+
+main {
+  flex: 1; }
+
+button[type="submit"] {
+  font-family: 'Merriweather', serif;
+  padding: 25px;
+  margin-top: 25px;
+  background-color: #4ebbb5;
+  color: #fff;
+  font-size: 26px;
+  border-radius: 5px;
+  border: 0;
+  width: 100%; }
+
+textarea#more_info {
+  height: 100px;
+  margin-top: 20px;
+  width: 100%; }
+
+@media (min-width: 768px) {
+  main {
+    width: 50%;
+    margin: 0 auto; }
+  fieldset {
+    display: block; }
+  textarea#more_info,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select {
+    width: 70%; } }
+
 body::before {
   color: red;
   position: fixed;
   top: 0;
   left: 0; }
-  @media (min-width: 1024px) {
-    body::before {
-      content: "DESKTOP"; } }
-  @media (min-width: 768px) {
-    body::before {
-      content: "TABLET"; } }
   @media (min-width: 320px) {
     body::before {
       content: "MOBILE"; } }
+  @media (min-width: 768px) {
+    body::before {
+      content: "TABLET"; } }
+  @media (min-width: 1024px) {
+    body::before {
+      content: "DESKTOP"; } }

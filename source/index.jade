@@ -5,8 +5,149 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css')
+    link(href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet")
     link(rel='stylesheet', href='css/styles.css')
   body
       header
+        h1 the code review
       main
+        section.intro
+          h2 Signup for our newsletter
+          p Get the latest news on how your code is doing right in your inbox
+
+        form
+
+          section.contact_info
+            fieldset
+              legend Contact Information
+
+              label(for="name") Full Name
+              input(type="text" name="user_name" id="name" placeholder="Required" required)
+              br
+
+              label(for="email") Email Address
+              input(type="email" name="user_email" id="email" placeholder="Required" required)
+              br
+
+              label(for="phone") Phone Number
+              input(type="tel" name="user_phone" id="phone" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" title="Phone Number Format: +99(99)9999-9999)")
+              br
+
+              label(for="street") Street Address
+              input(type="text" name="user_street" id="street")
+              br
+
+              label(for="city") City
+              input(type="text" name="user_city" id="city")
+              br
+
+              label(for="state") State
+              select(name="user_state" id="state" onchange="this.style.color='black'")
+                option(value='default' selected disabled hidden invalid) Choose State
+                option(value='AL') Alabama
+                option(value='AK') Alaska
+                option(value='AZ') Arizona
+                option(value='AR') Arkansas
+                option(value='CA') California
+                option(value='CO') Colorado
+                option(value='CT') Connecticut
+                option(value='DE') Delaware
+                option(value='DC') District Of Columbia
+                option(value='FL') Florida
+                option(value='GA') Georgia
+                option(value='HI') Hawaii
+                option(value='ID') Idaho
+                option(value='IL') Illinois
+                option(value='IN') Indiana
+                option(value='IA') Iowa
+                option(value='KS') Kansas
+                option(value='KY') Kentucky
+                option(value='LA') Louisiana
+                option(value='ME') Maine
+                option(value='MD') Maryland
+                option(value='MA') Massachusetts
+                option(value='MI') Michigan
+                option(value='MN') Minnesota
+                option(value='MS') Mississippi
+                option(value='MO') Missouri
+                option(value='MT') Montana
+                option(value='NE') Nebraska
+                option(value='NV') Nevada
+                option(value='NH') New Hampshire
+                option(value='NJ') New Jersey
+                option(value='NM') New Mexico
+                option(value='NY') New York
+                option(value='NC') North Carolina
+                option(value='ND') North Dakota
+                option(value='OH') Ohio
+                option(value='OK') Oklahoma
+                option(value='OR') Oregon
+                option(value='PA') Pennsylvania
+                option(value='RI') Rhode Island
+                option(value='SC') South Carolina
+                option(value='SD') South Dakota
+                option(value='TN') Tennessee
+                option(value='TX') Texas
+                option(value='UT') Utah
+                option(value='VT') Vermont
+                option(value='VA') Virginia
+                option(value='WA') Washington
+                option(value='WV') West Virginia
+                option(value='WI') Wisconsin
+                option(value='WY') Wyoming
+              br
+
+              label(for="zip") Zip Code
+              input(type="text" name="user_zip" id="zip" pattern="[0-9]{5}")
+
+          section.newletter
+            fieldset.newletter
+              legend.newsletter Newsletter
+              h3 Select the newsletters you would like to recive
+
+
+              input(type="checkbox" id="news_html" name="subscribe" value="news_html" checked)
+              label(for="news_html") HTML News
+              br
+
+              input(type="checkbox" id="news_css" name="subscribe" value="news_css" checked)
+              label(for="news_css") CSS News
+              br
+
+              input(type="checkbox" id="news_js" name="subscribe" value="news_js" checked)
+              label(for="news_js") Javascript News
+              br
+
+
+              h3 Newletter format
+
+              input(type="radio" id="format_html" name="format" value="format_html" checked)
+              label(for="format_html") HTML
+              br
+
+              input(type="radio" id="format_text" name="format" value="format_text")
+              label(for="format_text") Plain text
+              br
+
+              div.more_info
+                label(for="more_info") Other topics you'd like to hear about
+                textarea(id="more_info" name="user_more_info")
+
+
+
+          button(type="submit") Sign Up
       footer
+        div Copyright The code Review
+
+
+
+
+
+
+
+
+
+
+
+
+
