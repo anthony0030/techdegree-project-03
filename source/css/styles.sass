@@ -179,16 +179,26 @@ textarea#more_info
   fieldset
     display: block
 
-  textarea#more_info,
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  select
-    width: 70%
+  section.contact_info
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select
+      width: 75%
+      box-sizing: border-box
+      margin-top: 10px
+      margin-bottom: 10px
+    
+    input#zip
+      width: 30%
 
+    label
+      width: 25% 
+      display: inline-block
+      box-sizing: border-box
 
-
-
+  label[for="more_info"]
+    width: 100%
 
 @import debug
 

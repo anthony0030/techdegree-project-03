@@ -153,12 +153,22 @@ textarea#more_info {
     margin: 0 auto; }
   fieldset {
     display: block; }
-  textarea#more_info,
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  select {
-    width: 70%; } }
+  section.contact_info input[type="text"],
+  section.contact_info input[type="email"],
+  section.contact_info input[type="tel"],
+  section.contact_info select {
+    width: 75%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  section.contact_info input#zip {
+    width: 30%; }
+  section.contact_info label {
+    width: 25%;
+    display: inline-block;
+    box-sizing: border-box; }
+  label[for="more_info"] {
+    width: 100%; } }
 
 body::before {
   color: red;
