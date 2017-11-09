@@ -71,11 +71,11 @@ section.contact_info {
   border-top: 2px solid #2d3945;
   padding: 30px 0; }
 
-section.newletter h3 {
+section.newletter h4 {
   font-size: 16px;
   font-weight: normal;
   color: #55687a; }
-  section.newletter h3:first-of-type {
+  section.newletter h4:first-of-type {
     margin-top: 0; }
 
 fieldset {
