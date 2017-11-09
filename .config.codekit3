@@ -46,6 +46,15 @@
 		"rFN": 0,
 		"uCM": 0
 		},
+	"\/source\/_favicon.jade": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 1,
+		"oAP": "\/docs\/_favicon.html",
+		"oF": 0,
+		"oS": 0
+		},
 	"\/source\/css\/_debug.sass": {
 		"aP": 1,
 		"bl": 0,
@@ -72,6 +81,292 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/source\/favicon\/android-icon-144x144.png": {
+		"ft": 32768,
+		"iS": 6724,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/android-icon-144x144.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/android-icon-192x192.png": {
+		"ft": 32768,
+		"iS": 8508,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/android-icon-192x192.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/android-icon-36x36.png": {
+		"ft": 32768,
+		"iS": 1803,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/android-icon-36x36.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/android-icon-48x48.png": {
+		"ft": 32768,
+		"iS": 2097,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/android-icon-48x48.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/android-icon-72x72.png": {
+		"ft": 32768,
+		"iS": 3430,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/android-icon-72x72.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/android-icon-96x96.png": {
+		"ft": 32768,
+		"iS": 4335,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/android-icon-96x96.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-114x114.png": {
+		"ft": 32768,
+		"iS": 5051,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-114x114.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-120x120.png": {
+		"ft": 32768,
+		"iS": 5392,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-120x120.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-144x144.png": {
+		"ft": 32768,
+		"iS": 6724,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-144x144.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-152x152.png": {
+		"ft": 32768,
+		"iS": 7217,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-152x152.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-180x180.png": {
+		"ft": 32768,
+		"iS": 9017,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-180x180.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-57x57.png": {
+		"ft": 32768,
+		"iS": 2228,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-57x57.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-60x60.png": {
+		"ft": 32768,
+		"iS": 2899,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-60x60.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-72x72.png": {
+		"ft": 32768,
+		"iS": 3430,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-72x72.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-76x76.png": {
+		"ft": 32768,
+		"iS": 3563,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-76x76.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon-precomposed.png": {
+		"ft": 32768,
+		"iS": 9158,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon-precomposed.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/apple-icon.png": {
+		"ft": 32768,
+		"iS": 9158,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/apple-icon.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/browserconfig.xml": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/docs\/favicon\/browserconfig.xml",
+		"oF": 0
+		},
+	"\/source\/favicon\/favicon-16x16.png": {
+		"ft": 32768,
+		"iS": 1145,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/favicon-16x16.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/favicon-32x32.png": {
+		"ft": 32768,
+		"iS": 1613,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/favicon-32x32.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/favicon-96x96.png": {
+		"ft": 32768,
+		"iS": 4335,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/favicon-96x96.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/favicon.ico": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/docs\/favicon\/favicon.ico",
+		"oF": 0
+		},
+	"\/source\/favicon\/manifest.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/docs\/favicon\/manifest-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/source\/favicon\/ms-icon-144x144.png": {
+		"ft": 32768,
+		"iS": 6724,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/ms-icon-144x144.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/ms-icon-150x150.png": {
+		"ft": 32768,
+		"iS": 7216,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/ms-icon-150x150.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/ms-icon-310x310.png": {
+		"ft": 32768,
+		"iS": 19440,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/ms-icon-310x310.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/source\/favicon\/ms-icon-70x70.png": {
+		"ft": 32768,
+		"iS": 3319,
+		"oA": 0,
+		"oAP": "\/docs\/favicon\/ms-icon-70x70.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
 	"\/source\/index.jade": {
 		"cB": 0,
 		"cOD": 1,
@@ -80,6 +375,23 @@
 		"oAP": "\/docs\/index.html",
 		"oF": 0,
 		"oS": 0
+		},
+	"\/source\/logo\/logo.jpg": {
+		"ft": 16384,
+		"iS": 54001,
+		"oA": 1,
+		"oAP": "\/docs\/logo\/logo.jpg",
+		"oF": 1,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"\/source\/logo\/logo.psd": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/docs\/logo\/logo.psd",
+		"oF": 1
 		}
 	},
 "hooks": [
@@ -91,7 +403,7 @@
 	"displayValue": "techdegree-project-3",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "meme-girlfriend",
-	"lastBuiltDate": 531918298
+	"lastBuiltDate": 531920707
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
