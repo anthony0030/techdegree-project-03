@@ -30,7 +30,7 @@ html(lang='en')
 
               .form-group
                 label(for="phone") Phone Number
-                input(type="tel" name="user_phone" id="phone" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" title="Phone Number Format: +99(99)9999-9999)")
+                input(type="tel" name="user_phone" id="phone" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" title="Phone Number Format: +99(99)9999-9999)" placeholder="+99(99)9999-9999")
 
               .form-group
                 label(for="street") Street Address
@@ -98,7 +98,7 @@ html(lang='en')
 
               .form-group
                 label(for="zip") Zip Code
-                input(type="text" name="user_zip" id="zip" pattern="[0-9]{5}")
+                input(type="text" name="user_zip" id="zip" pattern="[0-9]{5}" title="Zip Code Format: 99999" placeholder="12345")
 
           section.newletter
             fieldset
