@@ -47,7 +47,7 @@
 		"uCM": 0
 		},
 	"\/source\/css\/_debug.sass": {
-		"aP": 0,
+		"aP": 1,
 		"bl": 0,
 		"dP": 10,
 		"dS": 0,
@@ -60,7 +60,7 @@
 		"uL": 1
 		},
 	"\/source\/css\/styles.sass": {
-		"aP": 0,
+		"aP": 1,
 		"bl": 0,
 		"dP": 10,
 		"dS": 0,
@@ -91,7 +91,7 @@
 	"displayValue": "techdegree-project-3",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "meme-girlfriend",
-	"lastBuiltDate": 531849441
+	"lastBuiltDate": 531913490
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -2002,7 +2002,7 @@
 		"debugStyle": 0,
 		"decimalPrecision": 10,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
+		"shouldRunAutoprefixer": 1,
 		"shouldRunBless": 0,
 		"useLibsass": 1
 		},

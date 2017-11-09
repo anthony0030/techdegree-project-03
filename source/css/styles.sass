@@ -1,25 +1,23 @@
+@import debug
+
 $dark-blue: #2d3945
 $light-blue: #46698b
 $verry-light-blue: #4ebbb5
 $text-grey: #b7bcbf
 $text-blue: #55687a
-$light-grey: #eff0f1
 
-html
+html,
+button
   font-family: 'Merriweather', serif
 
-body,
-fieldset
-  display: flex
-
-fieldset.newletter
-  display: block
-
-
 body
+  display: flex
   flex-direction: column
   min-height: 100vh
 
+ul
+  padding: 0
+  list-style: none
 
 header
   background-color: $dark-blue
@@ -32,6 +30,10 @@ header
     font-weight: normal
     text-transform: uppercase
 
+main
+  margin: 0 auto
+  padding: 0 20px
+
 footer
   text-align: center
   margin-top: 25px
@@ -41,186 +43,121 @@ footer
   font-size: 14px
   background-color: $dark-blue
 
-input,
-fieldset
-  border: 0
-
-
-fieldset
-  padding: 5px 0
-
-legend
-  font-size: 20px
-  font-weight: bold
-  margin-bottom: 30px
-  padding-top: 10px
-  color: $dark-blue
-
-div.more_info
-  margin-top: 30px
-
-label
-  padding-bottom: 15px
-  color: $text-blue
-  
-label[for="more_info"]
-  margin-top: 10px
-
-textarea#more_info,
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-select
-  padding-left: 10px
-  width: 100%
-  border-radius: 4px
-  height: 50px
-  background-color: #eee
-  border: 0
-  box-sizing: border-box
-  border: 2px solid transparent
-
-
-textarea#more_info:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-select:focus
-  transition: border 0.5s ease
-  border: 2px solid $light-blue
-  outline: none
-
-
-select
-  color: $text-grey
-
-
-
-option[invalid]
-  opacity: 0.4;
-
-input[type="checkbox"],
-input[type="radio"]
-  margin: 10px 15px 10px 1px
-
-
-
-
-input#zip
-  width: 50%
-
-
-
-input#name::-webkit-input-placeholder,
-input#email::-webkit-input-placeholder
-  text-align: right
-  padding-right: 20px
-
 section.intro
   text-align: center
   border-bottom: 5px solid $dark-blue
+  margin-top: 30px
   margin-bottom: 2px
   padding-bottom: 40px
   p
     color: $text-grey
   h2
     color: $dark-blue
-    font-weight: bold
-    margin-top: 30px
 
+section.newletter,
+section.contact_info
+  border-top: 2px solid $dark-blue
+  padding: 30px 0
 
 section.newletter
   h3
     font-size: 16px
     font-weight: normal
     color: $text-blue
-  h3:first-of-type
-    margin-top: 0
+    &:first-of-type
+      margin-top: 0
 
-section.newletter,
-section.contact_info
-  border-top: 2px solid $dark-blue
-  padding: 30px 0
-  
-section.intro,
-form
-  width: 90%
-  margin: 4px auto
+fieldset
+  border: none
+  padding: 0
+  margin-top: 10px
+  legend
+    margin-bottom: 30px
+    font-size: 20px
+    font-weight: bold
+    color: $dark-blue
 
+.form-group
+  width: 100%
+  margin-bottom: 20px
+  label, input
+    box-sizing: border-box
+    display: block
+  input, select
+    width: 100%
+  label
+    margin-bottom: 15px
+  &::after
+    clear: both
+    content: ""
+    display: table
 
-main
-  flex: 1
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select
+  padding: 10px
+  border-radius: 4px
+  height: 50px
+  background-color: #eee
+  box-sizing: border-box
+  border: 2px solid transparent
+  &:focus
+    transition: border-color 0.5s ease
+    border-color: $light-blue
+    outline: none
 
+input[type="checkbox"],
+input[type="radio"]
+  margin: 10px 15px 10px 1px
+
+textarea
+  width: 100%
+  height: 100px
+
+select
+  color: $text-grey
+
+input#zip
+  width: 50%
+
+input#name::placeholder,
+input#email::placeholder
+  text-align: right
+  padding-right: 10px
+
+div.more_info
+  margin-top: 30px
+
+label
+  color: $text-blue
+  &[for="more_info"]
+    display: block
+    margin-bottom: 20px
 
 button[type="submit"]
-  font-family: 'Merriweather', serif
-  padding: 25px
-  margin-top: 25px
-  background-color: $verry-light-blue
   color: #fff
+  background-color: $verry-light-blue
+  padding: 25px
   font-size: 26px
   border-radius: 5px
   border: 0
   width: 100%
 
-
-textarea#more_info
-  height: 100px
-  margin-top: 20px
-  width: 100%
-  padding-top: 10px
-
-
-
 @media (min-width:768px)
   main,
     width: 50%
     margin: 0 auto
-  fieldset
-    display: block
 
-  section.contact_info
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    select
-      width: 75%
-      box-sizing: border-box
-      margin-top: 10px
-      margin-bottom: 10px
-    
-    input#zip
-      width: 30%
-
+  .form-group
     label
-      width: 25% 
-      display: inline-block
-      box-sizing: border-box
-
-  label[for="more_info"]
-    width: 100%
-
-@import debug
-
-// body
-//   background-color: red
-// header
-//   background-color: orange
-// main
-//   background-color: yellow
-// footer
-//   background-color: green
-// form
-//   background-color: blue
-// .intro
-//   background-color: indigo
-// fieldset
-//   background-color: violet
-//   height: 250px
-
-
-
-
-
-
-
+      float: left
+      width: 40%
+      line-height: 50px
+    input,select
+      float: right
+      width: 60%
+      &#zip
+        width: 25%
+        float: left
