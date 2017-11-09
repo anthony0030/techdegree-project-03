@@ -24,6 +24,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="bower_components/pickadate/lib/themes/default.css">
+    <link rel="stylesheet" href="bower_components/pickadate/lib/themes/default.date.css">
   </head>
   <body>
     <header>
@@ -123,7 +125,7 @@
             </div>
             <div class="form-group">
               <label for="name">Subscription start</label>
-              <input type="text" data-inputmask-alias="date" data-inputmask-inputformat="mm/dd/yyyy">
+              <input type="text" placeholder="DD/MM/YYYY" readonly="" aria-haspopup="true" aria-expanded="true" class="datepicker">
             </div>
           </fieldset>
         </section>
@@ -179,6 +181,10 @@
       <script src="bower_components/inputmask/dist/inputmask/phone-codes/phone-be.js"></script>
       <script src="bower_components/inputmask/dist/inputmask/phone-codes/phone-ru.js"></script>
       <script src="bower_components/inputmask/dist/inputmask/bindings/inputmask.binding.js"></script>
+      <script src="bower_components/pickadate/lib/picker.js"></script>
+      <script src="bower_components/pickadate/lib/picker.date.js"></script>
+      <script src="bower_components/pickadate/lib/legacy.js"></script>
+      <script>$('.datepicker').pickadate({formatSubmit: 'dd/mm/yyyy',firstDay: 1, min: true, max: 7,  disable: [6,7]})</script>
     </footer>
   </body>
 </html>

@@ -8,6 +8,8 @@ html(lang='en')
     link(href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet")
     link(rel='stylesheet', href='css/styles.css')
     include _favicon
+    link(rel="stylesheet" href="bower_components/pickadate/lib/themes/default.css" )
+    link(rel="stylesheet" href="bower_components/pickadate/lib/themes/default.date.css")
   body
       header
         h1 the code review
@@ -104,7 +106,7 @@ html(lang='en')
 
               .form-group
                 label(for="name") Subscription start
-                input(type="text" data-inputmask-alias="date" data-inputmask-inputformat="mm/dd/yyyy")
+                input.datepicker( type="text" placeholder="DD/MM/YYYY" readonly="" aria-haspopup="true" aria-expanded="true")
 
           section.newletter
             fieldset
@@ -142,6 +144,7 @@ html(lang='en')
       footer Copyright The code Review
 
         script(src='bower_components/jquery/dist/jquery.js')
+        //- input masking
         script(src='bower_components/inputmask/dist/inputmask/inputmask.js')
         script(src='bower_components/inputmask/dist/inputmask/inputmask.extensions.js')
         script(src='bower_components/inputmask/dist/inputmask/inputmask.numeric.extensions.js')
@@ -152,3 +155,11 @@ html(lang='en')
         script(src='bower_components/inputmask/dist/inputmask/phone-codes/phone-be.js')
         script(src='bower_components/inputmask/dist/inputmask/phone-codes/phone-ru.js')
         script(src="bower_components/inputmask/dist/inputmask/bindings/inputmask.binding.js")
+        //-  date piker
+        script(src="bower_components/pickadate/lib/picker.js")
+        script(src="bower_components/pickadate/lib/picker.date.js")
+        script(src="bower_components/pickadate/lib/legacy.js")
+
+        script
+          $('.datepicker').pickadate({formatSubmit: 'dd/mm/yyyy',firstDay: 1, min: true, max: 7,  disable: [6,7]})
+

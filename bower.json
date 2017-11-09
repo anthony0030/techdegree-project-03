@@ -33,6 +33,7 @@
   ],
   "private": true,
   "dependencies": {
-    "inputmask": "jquery.inputmask#^3.3.10"
+    "inputmask": "jquery.inputmask#^3.3.10",
+    "pickadate": "^3.5.6"
   }
 }
