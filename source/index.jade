@@ -24,15 +24,15 @@ html(lang='en')
               
               .form-group
                 label(for="name") Full Name
-                input(type="text" name="user_name" id="name" placeholder="Required" required)
+                input(type="text" name="user_name" id="name"  placeholder="Required")
               
               .form-group
                 label(for="email") Email Address
-                input(type="email" name="user_email" id="email" placeholder="Required" required)
+                input(type="text" name="user_email" id="email" placeholder="Required" required data-inputmask="'alias': 'email'")
 
               .form-group
                 label(for="phone") Phone Number
-                input(type="tel" name="user_phone" id="phone" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" title="Phone Number Format: +99(99)9999-9999)" placeholder="+99(99)9999-9999")
+                input(type="tel" name="user_phone" id="phone" placeholder="+99(99)9999-9999" data-inputmask="'mask': '+(99)99999-99999'")
 
               .form-group
                 label(for="street") Street Address
@@ -100,7 +100,11 @@ html(lang='en')
 
               .form-group
                 label(for="zip") Zip Code
-                input(type="text" name="user_zip" id="zip" pattern="[0-9]{5}" title="Zip Code Format: 99999" placeholder="12345")
+                input(type="text" name="user_zip" id="zip" pattern="[0-9]{5}" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '9999'")
+
+              .form-group
+                label(for="name") Subscription start
+                input(type="text" data-inputmask-alias="date" data-inputmask-inputformat="mm/dd/yyyy")
 
           section.newletter
             fieldset
@@ -136,3 +140,15 @@ html(lang='en')
 
           button(type="submit") Sign Up
       footer Copyright The code Review
+
+        script(src='bower_components/jquery/dist/jquery.js')
+        script(src='bower_components/inputmask/dist/inputmask/inputmask.js')
+        script(src='bower_components/inputmask/dist/inputmask/inputmask.extensions.js')
+        script(src='bower_components/inputmask/dist/inputmask/inputmask.numeric.extensions.js')
+        script(src='bower_components/inputmask/dist/inputmask/inputmask.date.extensions.js')
+        script(src='bower_components/inputmask/dist/inputmask/inputmask.phone.extensions.js')
+        script(src='bower_components/inputmask/dist/inputmask/jquery.inputmask.js')
+        script(src='bower_components/inputmask/dist/inputmask/phone-codes/phone.js')
+        script(src='bower_components/inputmask/dist/inputmask/phone-codes/phone-be.js')
+        script(src='bower_components/inputmask/dist/inputmask/phone-codes/phone-ru.js')
+        script(src="bower_components/inputmask/dist/inputmask/bindings/inputmask.binding.js")
