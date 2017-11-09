@@ -19,7 +19,8 @@ ul {
 header {
   background-color: #2d3945;
   text-align: center;
-  box-size: content-box; }
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; }
   header h1 {
     color: white;
     margin: 25px auto;
