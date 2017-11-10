@@ -18,7 +18,7 @@ html(lang='en')
           h2 Signup for our newsletter
           p Get the latest news on how your code is doing right in your inbox
 
-        form
+        form(data-parsley-validate)#form
           section.contact_info
             fieldset
               legend
@@ -26,15 +26,15 @@ html(lang='en')
               
               .form-group
                 label(for="name") Full Name
-                input(type="text" name="user_name" id="name"  placeholder="Required")
+                input(type="text" name="user_name" id="name" placeholder="Required" data-parsley-errors-messages-disabled data-parsley-trigger="change" required minlength="1")
               
               .form-group
                 label(for="email") Email Address
-                input(type="text" name="user_email" id="email" placeholder="Required" required data-inputmask="'alias': 'email'")
+                input(type="text" name="user_email" id="email" data-parsley-type="email" placeholder="Required" required data-inputmask="'alias': 'email'" data-parsley-trigger="change" data-parsley-errors-messages-disabled)
 
               .form-group
                 label(for="phone") Phone Number
-                input(type="tel" name="user_phone" id="phone" placeholder="+ (99) 99999 - 99999" data-inputmask="'mask': '+ (99) 99999 - 99999'")
+                input(type="tel" name="user_phone" id="phone" placeholder="+ (99) 99999 - 99999" data-inputmask="'mask': '+ (99) 99999 - 99999'" data-parsley-trigger="change" data-parsley-pattern='\\+\\s\\(\\d\\d\\)\\s\\d\\d\\d\\d\\d\\s\\-\\s\\d\\d\\d\\d\\d' data-parsley-errors-messages-disabled)
 
               .form-group
                 label(for="street") Street Address
@@ -102,7 +102,7 @@ html(lang='en')
 
               .form-group
                 label(for="zip") Zip Code
-                input(type="text" name="user_zip" id="zip" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '99999'")
+                input(type="text" name="user_zip" id="zip" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '99999'" data-parsley-errors-messages-disabled minlength="5" data-parsley-trigger="change" data-parsley-type="digits")
 
               .form-group
                 label(for="name") Subscription start
@@ -159,6 +159,7 @@ html(lang='en')
         script(src="bower_components/pickadate/lib/picker.js")
         script(src="bower_components/pickadate/lib/picker.date.js")
         script(src="bower_components/pickadate/lib/legacy.js")
-
         script $('.datepicker').pickadate({formatSubmit: 'dd/mm/yyyy',firstDay: 1, min: true, max: 7,  disable: [6,7]})
-
+        //-  parsley.js
+        script(src="bower_components/parsleyjs/dist/parsley.min.js")
+        script $('#form').parsley();
