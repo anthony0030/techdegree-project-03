@@ -1,1 +1,1 @@
-function show_star(e){document.getElementById(e).innerHTML+="<span class='red'> *</span>",document.getElementById(e).removeAttribute("id")}
+function show_star(e){document.getElementById(e).innerHTML+="<span class='red'> *</span>",document.getElementById(e).removeAttribute("id")}$(document).ready(function(){$(".datepicker").pickadate({formatSubmit:"dd/mm/yyyy",firstDay:1,min:!0,max:7,disable:[6,7]}),$("#form").parsley()});
