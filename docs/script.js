@@ -1,0 +1,1 @@
+function show_star(e){document.getElementById(e).innerHTML+="<span class='red'> *</span>",document.getElementById(e).removeAttribute("id")}

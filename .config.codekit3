@@ -6921,6 +6921,16 @@
 		"oA": 1,
 		"oAP": "\/docs\/logo\/logo.psd",
 		"oF": 1
+		},
+	"\/source\/script.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/docs\/script.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
 		}
 	},
 "hooks": [
@@ -6932,7 +6942,7 @@
 	"displayValue": "techdegree-project-3",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "meme-girlfriend",
-	"lastBuiltDate": 531935065
+	"lastBuiltDate": 532004889
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
