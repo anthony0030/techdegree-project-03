@@ -11,144 +11,144 @@ html(lang='en')
     link(rel="stylesheet" href="bower_components/pickadate/lib/themes/default.css" )
     link(rel="stylesheet" href="bower_components/pickadate/lib/themes/default.date.css")
   body
-      header
-        h1 the code review
-      main
-        section.intro
-          h2 Signup for our newsletter
-          p Get the latest news on how your code is doing right in your inbox
+    header
+      h1 the code review
+    main
+      section.intro
+        h2 Signup for our newsletter
+        p Get the latest news on how your code is doing right in your inbox
 
-        form(data-parsley-validate)#form
-          section.contact_info
-            fieldset
-              legend
-                h3 Contact Information
-              
-              .form-group
-                label(for="name" id="name_label") Full Name
-                input(type="text" name="user_name" id="name" placeholder="Required" data-parsley-errors-messages-disabled data-parsley-trigger="change" required minlength="1" onchange="show_star('name_label')")
-              
-              .form-group
-                label(for="email" id="email_label") Email Address
-                input(type="text" name="user_email" id="email" data-parsley-type="email" placeholder="Required" required data-inputmask="'alias': 'email'" data-parsley-trigger="change" data-parsley-errors-messages-disabled onchange="show_star('email_label')")
+      form(data-parsley-validate)#form
+        section.contact_info
+          fieldset
+            legend
+              h3 Contact Information
+            
+            .form-group
+              label(for="name" id="name_label") Full Name
+              input(type="text" name="user_name" id="name" placeholder="Required" data-parsley-errors-messages-disabled data-parsley-trigger="change" required minlength="1" onchange="show_star('name_label')")
+            
+            .form-group
+              label(for="email" id="email_label") Email Address
+              input(type="text" name="user_email" id="email" data-parsley-type="email" placeholder="Required" required data-inputmask="'alias': 'email'" data-parsley-trigger="change" data-parsley-errors-messages-disabled onchange="show_star('email_label')")
 
-              .form-group
-                label(for="phone") Phone Number
-                input(type="tel" name="user_phone" id="phone" placeholder="+ (99) 99999 - 99999" data-inputmask="'mask': '+ (99) 99999 - 99999'" data-parsley-trigger="change" data-parsley-pattern='\\+\\s\\(\\d\\d\\)\\s\\d\\d\\d\\d\\d\\s\\-\\s\\d\\d\\d\\d\\d' data-parsley-errors-messages-disabled)
+            .form-group
+              label(for="phone") Phone Number
+              input(type="tel" name="user_phone" id="phone" placeholder="+ (99) 99999 - 99999" data-inputmask="'mask': '+ (99) 99999 - 99999'" data-parsley-trigger="change" data-parsley-pattern='\\+\\s\\(\\d\\d\\)\\s\\d\\d\\d\\d\\d\\s\\-\\s\\d\\d\\d\\d\\d' data-parsley-errors-messages-disabled)
 
-              .form-group
-                label(for="street") Street Address
-                input(type="text" name="user_street" id="street")
+            .form-group
+              label(for="street") Street Address
+              input(type="text" name="user_street" id="street")
 
-              .form-group
-                label(for="city") City
-                input(type="text" name="user_city" id="city")
+            .form-group
+              label(for="city") City
+              input(type="text" name="user_city" id="city")
 
-              .form-group
-                label(for="state") State
-                select(name="user_state" id="state" onchange="this.style.color='black'")
-                  option(value='' selected disabled hidden) Choose State
-                  option(value='AL') Alabama
-                  option(value='AK') Alaska
-                  option(value='AZ') Arizona
-                  option(value='AR') Arkansas
-                  option(value='CA') California
-                  option(value='CO') Colorado
-                  option(value='CT') Connecticut
-                  option(value='DE') Delaware
-                  option(value='DC') District Of Columbia
-                  option(value='FL') Florida
-                  option(value='GA') Georgia
-                  option(value='HI') Hawaii
-                  option(value='ID') Idaho
-                  option(value='IL') Illinois
-                  option(value='IN') Indiana
-                  option(value='IA') Iowa
-                  option(value='KS') Kansas
-                  option(value='KY') Kentucky
-                  option(value='LA') Louisiana
-                  option(value='ME') Maine
-                  option(value='MD') Maryland
-                  option(value='MA') Massachusetts
-                  option(value='MI') Michigan
-                  option(value='MN') Minnesota
-                  option(value='MS') Mississippi
-                  option(value='MO') Missouri
-                  option(value='MT') Montana
-                  option(value='NE') Nebraska
-                  option(value='NV') Nevada
-                  option(value='NH') New Hampshire
-                  option(value='NJ') New Jersey
-                  option(value='NM') New Mexico
-                  option(value='NY') New York
-                  option(value='NC') North Carolina
-                  option(value='ND') North Dakota
-                  option(value='OH') Ohio
-                  option(value='OK') Oklahoma
-                  option(value='OR') Oregon
-                  option(value='PA') Pennsylvania
-                  option(value='RI') Rhode Island
-                  option(value='SC') South Carolina
-                  option(value='SD') South Dakota
-                  option(value='TN') Tennessee
-                  option(value='TX') Texas
-                  option(value='UT') Utah
-                  option(value='VT') Vermont
-                  option(value='VA') Virginia
-                  option(value='WA') Washington
-                  option(value='WV') West Virginia
-                  option(value='WI') Wisconsin
-                  option(value='WY') Wyoming
+            .form-group
+              label(for="state") State
+              select(name="user_state" id="state" onchange="this.style.color='black'")
+                option(value='' selected disabled hidden) Choose State
+                option(value='AL') Alabama
+                option(value='AK') Alaska
+                option(value='AZ') Arizona
+                option(value='AR') Arkansas
+                option(value='CA') California
+                option(value='CO') Colorado
+                option(value='CT') Connecticut
+                option(value='DE') Delaware
+                option(value='DC') District Of Columbia
+                option(value='FL') Florida
+                option(value='GA') Georgia
+                option(value='HI') Hawaii
+                option(value='ID') Idaho
+                option(value='IL') Illinois
+                option(value='IN') Indiana
+                option(value='IA') Iowa
+                option(value='KS') Kansas
+                option(value='KY') Kentucky
+                option(value='LA') Louisiana
+                option(value='ME') Maine
+                option(value='MD') Maryland
+                option(value='MA') Massachusetts
+                option(value='MI') Michigan
+                option(value='MN') Minnesota
+                option(value='MS') Mississippi
+                option(value='MO') Missouri
+                option(value='MT') Montana
+                option(value='NE') Nebraska
+                option(value='NV') Nevada
+                option(value='NH') New Hampshire
+                option(value='NJ') New Jersey
+                option(value='NM') New Mexico
+                option(value='NY') New York
+                option(value='NC') North Carolina
+                option(value='ND') North Dakota
+                option(value='OH') Ohio
+                option(value='OK') Oklahoma
+                option(value='OR') Oregon
+                option(value='PA') Pennsylvania
+                option(value='RI') Rhode Island
+                option(value='SC') South Carolina
+                option(value='SD') South Dakota
+                option(value='TN') Tennessee
+                option(value='TX') Texas
+                option(value='UT') Utah
+                option(value='VT') Vermont
+                option(value='VA') Virginia
+                option(value='WA') Washington
+                option(value='WV') West Virginia
+                option(value='WI') Wisconsin
+                option(value='WY') Wyoming
 
-              .form-group
-                label(for="zip") Zip Code
-                input(type="text" name="user_zip" id="zip" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '99999'" data-parsley-errors-messages-disabled minlength="5" data-parsley-trigger="change" data-parsley-type="digits" ata-parsley-pattern='\\d\\d\\d\\d\\d')
+            .form-group
+              label(for="zip") Zip Code
+              input(type="text" name="user_zip" id="zip" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '99999'" data-parsley-errors-messages-disabled minlength="5" data-parsley-trigger="change" data-parsley-type="digits" ata-parsley-pattern='\\d\\d\\d\\d\\d')
 
-              .form-group
-                label(for="subscription") Subscription Start
-                input.datepicker(type="text" name="subscription_start" id="subscription" placeholder="DD/MM/YYYY" readonly="" aria-haspopup="true" aria-expanded="true")
+            .form-group
+              label(for="subscription") Subscription Start
+              input.datepicker(type="text" name="subscription_start" id="subscription" placeholder="DD/MM/YYYY" readonly="" aria-haspopup="true" aria-expanded="true")
 
-              .form-group
-                label(for="elite") Elite Code 
-                  small 
-                    sup (This is if you know Anthony Veaudry)
-                input(type="text" name="user_elite" id="elite" placeholder="AB1-CDEFG-23-45HI-J" data-parsley-trigger="change" data-parsley-pattern='[A-Z][A-Z]\\d\\-[A-Z][A-Z][A-Z][A-Z][A-Z]\\-\\d\\d\\-\\d\\d[A-Z][A-Z]\\-[A-Z]' data-inputmask="'mask': 'AA9-AAAAA-99-99AA-A'")
+            .form-group
+              label(for="elite") Elite Code 
+                small 
+                  sup (This is if you know Anthony Veaudry)
+              input(type="text" name="user_elite" id="elite" placeholder="AB1-CDEFG-23-45HI-J" data-parsley-trigger="change" data-parsley-pattern='[A-Z][A-Z]\\d\\-[A-Z][A-Z][A-Z][A-Z][A-Z]\\-\\d\\d\\-\\d\\d[A-Z][A-Z]\\-[A-Z]' data-inputmask="'mask': 'AA9-AAAAA-99-99AA-A'")
 
 
-          section.newletter
-            fieldset
-              legend
-                h3 Newsletter
-              h4 Select the newsletters you would like to recive
+        section.newletter
+          fieldset
+            legend
+              h3 Newsletter
+            h4 Select the newsletters you would like to recive
 
-              ul
-                li
-                  input(type="checkbox" id="news_html" name="subscribe" value="news_html" checked)
-                  label(for="news_html") HTML News
-                li
-                  input(type="checkbox" id="news_css" name="subscribe" value="news_css" checked)
-                  label(for="news_css") CSS News
-                li
-                  input(type="checkbox" id="news_js" name="subscribe" value="news_js" checked)
-                  label(for="news_js") Javascript News
+            ul
+              li
+                input(type="checkbox" id="news_html" name="subscribe" value="news_html" checked)
+                label(for="news_html") HTML News
+              li
+                input(type="checkbox" id="news_css" name="subscribe" value="news_css" checked)
+                label(for="news_css") CSS News
+              li
+                input(type="checkbox" id="news_js" name="subscribe" value="news_js" checked)
+                label(for="news_js") Javascript News
 
-              h4 Newletter format
+            h4 Newletter format
 
-              ul
-                li
-                  input(type="radio" id="format_html" name="format" value="format_html" checked)
-                  label(for="format_html") HTML
-              
-                li
-                  input(type="radio" id="format_text" name="format" value="format_text")
-                  label(for="format_text") Plain text
-              
-              div.more_info
-                label(for="more_info") Other topics you'd like to hear about
-                textarea(id="more_info" name="user_more_info")
+            ul
+              li
+                input(type="radio" id="format_html" name="format" value="format_html" checked)
+                label(for="format_html") HTML
+            
+              li
+                input(type="radio" id="format_text" name="format" value="format_text")
+                label(for="format_text") Plain text
+            
+            div.more_info
+              label(for="more_info") Other topics you'd like to hear about
+              textarea(id="more_info" name="user_more_info")
 
-          button(type="submit") Sign Up
-      footer Copyright The code Review
+        button(type="submit") Sign Up
+    footer Copyright The code Review
         
         //- Custom 
         script(src='script.js')
