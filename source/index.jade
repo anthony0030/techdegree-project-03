@@ -102,7 +102,7 @@ html(lang='en')
 
               .form-group
                 label(for="zip") Zip Code
-                input(type="text" name="user_zip" id="zip" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '99999'" data-parsley-errors-messages-disabled minlength="5" data-parsley-trigger="change" data-parsley-type="digits")
+                input(type="text" name="user_zip" id="zip" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '99999'" data-parsley-errors-messages-disabled minlength="5" data-parsley-trigger="change" data-parsley-type="digits" ata-parsley-pattern='\\d\\d\\d\\d\\d')
 
               .form-group
                 label(for="subscription") Subscription Start
