@@ -18,23 +18,23 @@ html(lang='en')
           h2 Signup for our newsletter
           p Get the latest news on how your code is doing right in your inbox
 
-        form
+        form(data-parsley-validate)#form
           section.contact_info
             fieldset
               legend
                 h3 Contact Information
               
               .form-group
-                label(for="name") Full Name
-                input(type="text" name="user_name" id="name"  placeholder="Required")
+                label(for="name" id="name_label") Full Name
+                input(type="text" name="user_name" id="name" placeholder="Required" data-parsley-errors-messages-disabled data-parsley-trigger="change" required minlength="1" onchange="show_star('name_label')")
               
               .form-group
-                label(for="email") Email Address
-                input(type="text" name="user_email" id="email" placeholder="Required" required data-inputmask="'alias': 'email'")
+                label(for="email" id="email_label") Email Address
+                input(type="text" name="user_email" id="email" data-parsley-type="email" placeholder="Required" required data-inputmask="'alias': 'email'" data-parsley-trigger="change" data-parsley-errors-messages-disabled onchange="show_star('email_label')")
 
               .form-group
                 label(for="phone") Phone Number
-                input(type="tel" name="user_phone" id="phone" placeholder="+ (99) 99999 - 99999" data-inputmask="'mask': '+ (99) 99999 - 99999'")
+                input(type="tel" name="user_phone" id="phone" placeholder="+ (99) 99999 - 99999" data-inputmask="'mask': '+ (99) 99999 - 99999'" data-parsley-trigger="change" data-parsley-pattern='\\+\\s\\(\\d\\d\\)\\s\\d\\d\\d\\d\\d\\s\\-\\s\\d\\d\\d\\d\\d' data-parsley-errors-messages-disabled)
 
               .form-group
                 label(for="street") Street Address
@@ -102,11 +102,18 @@ html(lang='en')
 
               .form-group
                 label(for="zip") Zip Code
-                input(type="text" name="user_zip" id="zip" pattern="[0-9]{5}" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '9999'")
+                input(type="text" name="user_zip" id="zip" title="Zip Code Format: 99999" placeholder="12345" data-inputmask="'mask': '99999'" data-parsley-errors-messages-disabled minlength="5" data-parsley-trigger="change" data-parsley-type="digits" ata-parsley-pattern='\\d\\d\\d\\d\\d')
 
               .form-group
-                label(for="name") Subscription start
-                input.datepicker( type="text" placeholder="DD/MM/YYYY" readonly="" aria-haspopup="true" aria-expanded="true")
+                label(for="subscription") Subscription Start
+                input.datepicker(type="text" name="subscription_start" id="subscription" placeholder="DD/MM/YYYY" readonly="" aria-haspopup="true" aria-expanded="true")
+
+              .form-group
+                label(for="elite") Elite Code 
+                  small 
+                    sup (This is if you know Anthony Veaudry)
+                input(type="text" name="user_elite" id="elite" placeholder="AB1-CDEFG-23-45HI-J" data-parsley-trigger="change" data-parsley-pattern='[A-Z][A-Z]\\d\\-[A-Z][A-Z][A-Z][A-Z][A-Z]\\-\\d\\d\\-\\d\\d[A-Z][A-Z]\\-[A-Z]' data-inputmask="'mask': 'AA9-AAAAA-99-99AA-A'")
+
 
           section.newletter
             fieldset
@@ -142,7 +149,10 @@ html(lang='en')
 
           button(type="submit") Sign Up
       footer Copyright The code Review
-
+        
+        //- Custom 
+        script(src='script.js')
+        //- jQuery
         script(src='bower_components/jquery/dist/jquery.js')
         //- input masking
         script(src='bower_components/inputmask/dist/inputmask/inputmask.js')
@@ -159,6 +169,7 @@ html(lang='en')
         script(src="bower_components/pickadate/lib/picker.js")
         script(src="bower_components/pickadate/lib/picker.date.js")
         script(src="bower_components/pickadate/lib/legacy.js")
-
         script $('.datepicker').pickadate({formatSubmit: 'dd/mm/yyyy',firstDay: 1, min: true, max: 7,  disable: [6,7]})
-
+        //-  parsley.js
+        script(src="bower_components/parsleyjs/dist/parsley.min.js")
+        script $('#form').parsley();
