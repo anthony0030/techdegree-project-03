@@ -1,0 +1,22 @@
+doctype html
+html(lang='en')
+  head
+    title Online Registration Form
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css')
+    link(href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet")
+    link(rel='stylesheet', href='css/styles.css')
+    include _favicon
+
+  body
+    header
+      h1 the code review
+    main#subscribe
+      h2 Welcome <?php echo $_POST["user_name"]; ?>
+      h3 We Will send your subscription to: 
+      span.user_email<?php echo $_POST["user_email"]; ?>
+      h3 Starting: <?php echo $_POST["subscription_start"]; ?>
+
+
+    footer Copyright The code Review
