@@ -7,7 +7,7 @@
 		"uuidString": "9A13AC89-A095-490D-A799-72F858D9CC5C"
 		}
 	],
-"creatorBuild": "26097",
+"creatorBuild": "26148",
 "files": {
 	"\/.gitignore": {
 		"cB": 0,
@@ -6931,6 +6931,15 @@
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
+		},
+	"\/source\/subscribe.jade": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"oA": 0,
+		"oAP": "\/docs\/subscribe.php",
+		"oF": 2,
+		"oS": 0
 		}
 	},
 "hooks": [
@@ -6942,7 +6951,7 @@
 	"displayValue": "techdegree-project-3",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "meme-girlfriend",
-	"lastBuiltDate": 532010190
+	"lastBuiltDate": 532610748
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
