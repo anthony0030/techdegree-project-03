@@ -4,6 +4,7 @@ $dark-blue: #2d3945
 $light-blue: #46698b
 $verry-light-blue: #4ebbb5
 $text-grey: #b7bcbf
+$input-grey: #eee
 $text-blue: #55687a
 
 html,
@@ -33,6 +34,12 @@ header
 main
   margin: 0 auto
   padding: 0 20px
+  flex-grow: 1
+  &#subscribe
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
 
 footer
   text-align: center
@@ -81,6 +88,12 @@ input.parsley-error
   background-color: #ff7a7a !important
   border-color: red !important
 
+span.user_email
+  border: 2px solid $dark-blue
+  padding: 10px
+  border-radius: 5px
+  background-color: $input-grey
+
 .red
   color: red
 
@@ -107,7 +120,7 @@ select
   padding: 10px
   border-radius: 4px
   height: 50px
-  background-color: #eee
+  background-color: $input-grey
   box-sizing: border-box
   border: 2px solid transparent
   &:focus
