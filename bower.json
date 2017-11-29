@@ -35,7 +35,7 @@
   "dependencies": {
     "inputmask": "jquery.inputmask#^3.3.10",
     "pickadate": "^3.5.6",
-    "parsleyjs": "^2.8.0"
+    "parsleyjs": "^2.8.0",
     "typeit": "^5.0.1"
   }
 }
