@@ -1,0 +1,15 @@
+{
+  "name": "typeit",
+  "homepage": "https://github.com/alexmacarthur/typeit",
+  "version": "5.0.1",
+  "_release": "5.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v5.0.1",
+    "commit": "e3f54aad1d47e97d9ce8c09618224295b4325c22"
+  },
+  "_source": "https://github.com/alexmacarthur/typeit.git",
+  "_target": "^5.0.1",
+  "_originalSource": "typeit",
+  "_direct": true
+}
