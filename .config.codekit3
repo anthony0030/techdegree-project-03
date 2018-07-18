@@ -7,7 +7,7 @@
 		"uuidString": "9A13AC89-A095-490D-A799-72F858D9CC5C"
 		}
 	],
-"creatorBuild": "26330",
+"creatorBuild": "26680",
 "files": {
 	"\/.gitignore": {
 		"cB": 0,
@@ -7038,6 +7038,7 @@
 	"\/source\/logo\/logo.jpg": {
 		"ft": 16384,
 		"iS": 54001,
+		"jF": 0,
 		"oA": 1,
 		"oAP": "\/docs\/logo\/logo.jpg",
 		"oF": 1,
@@ -7078,10 +7079,11 @@
 	},
 "projectAttributes": {
 	"creationDate": 529505745,
-	"displayValue": "techdegree-project-3",
-	"displayValueWasSetByUser": 0,
+	"displayValue": "techdegree-project-03",
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-girlfriend",
-	"lastBuiltDate": 542132063
+	"iconImageWasSetByUser": 0,
+	"lastBuiltDate": 553605145
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -8884,6 +8886,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"outputFormat": 0,
 		"quality": 100
 		},
 	"languageDefaultsJS": {
