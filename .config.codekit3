@@ -644,6 +644,16 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"\/bower_components\/jquery\/src\/core\/camelCase.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/jquery\/src\/core\/camelCase.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"\/bower_components\/jquery\/src\/core\/DOMEval.js": {
 		"ft": 64,
 		"ma": 0,
@@ -730,6 +740,16 @@
 		"mi": 1,
 		"oA": 2,
 		"oAP": "\/docs\/bower_components\/jquery\/src\/core\/support.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/jquery\/src\/core\/toType.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/jquery\/src\/core\/toType.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -844,12 +864,12 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"\/bower_components\/jquery\/src\/css\/var\/rmargin.js": {
+	"\/bower_components\/jquery\/src\/css\/var\/rboxStyle.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 2,
-		"oAP": "\/docs\/bower_components\/jquery\/src\/css\/var\/rmargin.js",
+		"oAP": "\/docs\/bower_components\/jquery\/src\/css\/var\/rboxStyle.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1390,6 +1410,26 @@
 		"mi": 1,
 		"oA": 2,
 		"oAP": "\/docs\/bower_components\/jquery\/src\/var\/indexOf.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/jquery\/src\/var\/isFunction.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/jquery\/src\/var\/isFunction.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/jquery\/src\/var\/isWindow.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/jquery\/src\/var\/isWindow.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -4055,6 +4095,16 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"\/bower_components\/parsleyjs\/dist\/i18n\/tk.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/parsleyjs\/dist\/i18n\/tk.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"\/bower_components\/parsleyjs\/dist\/i18n\/tr.js": {
 		"ft": 64,
 		"ma": 0,
@@ -4852,6 +4902,16 @@
 		"mi": 1,
 		"oA": 2,
 		"oAP": "\/docs\/bower_components\/parsleyjs\/src\/i18n\/th.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/parsleyjs\/src\/i18n\/tk.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/parsleyjs\/src\/i18n\/tk.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -6560,11 +6620,25 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"\/bower_components\/typeit\/.editorconfig": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/.editorconfig",
+		"oF": 0
+		},
 	"\/bower_components\/typeit\/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/docs\/bower_components\/typeit\/.gitignore",
+		"oF": 0
+		},
+	"\/bower_components\/typeit\/.travis.yml": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/.travis.yml",
 		"oF": 0
 		},
 	"\/bower_components\/typeit\/CODE_OF_CONDUCT.md": {
@@ -6584,6 +6658,34 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"\/bower_components\/typeit\/CONTRIBUTING.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/CONTRIBUTING.md",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
+	"\/bower_components\/typeit\/dist\/typeit.es.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/dist\/typeit.es.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
 		},
 	"\/bower_components\/typeit\/dist\/typeit.js": {
 		"ft": 64,
@@ -6605,12 +6707,22 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"\/bower_components\/typeit\/index.html": {
+	"\/bower_components\/typeit\/LICENSE": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/docs\/bower_components\/typeit\/index.html",
+		"oAP": "\/docs\/bower_components\/typeit\/LICENSE",
 		"oF": 0
+		},
+	"\/bower_components\/typeit\/notice.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/notice.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
 		},
 	"\/bower_components\/typeit\/package.json": {
 		"ft": 524288,
@@ -6638,11 +6750,48 @@
 		"rFN": 0,
 		"uCM": 0
 		},
-	"\/bower_components\/typeit\/src\/instance.js": {
+	"\/bower_components\/typeit\/rollup.config.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/rollup.config.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/typeit\/sandbox.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/sandbox.html",
+		"oF": 0
+		},
+	"\/bower_components\/typeit\/serve.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/serve.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/typeit\/src\/defaults.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "\/docs\/bower_components\/typeit\/src\/defaults.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/typeit\/src\/instance.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
 		"oAP": "\/docs\/bower_components\/typeit\/src\/instance.js",
 		"oF": 0,
 		"sC": 3,
@@ -6652,18 +6801,58 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/docs\/bower_components\/typeit\/src\/typeit.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"\/bower_components\/typeit\/webpack.config.js": {
+	"\/bower_components\/typeit\/src\/utilities.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "\/docs\/bower_components\/typeit\/src\/utilities.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/typeit\/tests\/base.test.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 2,
-		"oAP": "\/docs\/bower_components\/typeit\/webpack.config.js",
+		"oAP": "\/docs\/bower_components\/typeit\/tests\/base.test.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/typeit\/tests\/callback.test.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/tests\/callback.test.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/typeit\/tests\/options.test.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/tests\/options.test.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/bower_components\/typeit\/tests\/typing.test.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 2,
+		"oAP": "\/docs\/bower_components\/typeit\/tests\/typing.test.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0

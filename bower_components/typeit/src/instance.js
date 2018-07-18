@@ -1,185 +1,303 @@
+import "./defaults.js";
+import {
+  isVisible,
+  groupHTMLTags,
+  randomInRange,
+  removeComments,
+  startsWith,
+  toArray
+} from "./utilities";
+
 export default class Instance {
-  constructor(element, options) {
-    this.defaults = {
-      strings: [],
-      speed: 100,
-      deleteSpeed: undefined,
-      lifeLike: true,
-      cursor: true,
-      cursorSpeed: 1000,
-      breakLines: true,
-      startDelay: 250,
-      startDelete: false,
-      nextStringDelay: 750,
-      loop: false,
-      loopDelay: 750,
-      html: true,
-      autoStart: true,
-      callback: function() {}
-    };
-
-    this.id = "";
-    this.queue = [];
-    this.queueIndex = 0;
+  constructor(element, id, options, autoInit, typeit) {
+    this.typeit = typeit;
+    this.timeouts = [];
+    this.id = id;
+    this.autoInit = autoInit;
     this.hasStarted = false;
-    this.inTag = false;
+    this.isFrozen = false;
+    this.isComplete = false;
+    this.hasBeenDestroyed = false;
+    this.queue = [];
+    this.isInTag = false;
     this.stringsToDelete = "";
-    this.style =
-      'style="display:inline;position:relative;font:inherit;color:inherit;"';
+    this.style = "display:inline;position:relative;font:inherit;color:inherit;";
     this.element = element;
+    this.setOptions(options, window.TypeItDefaults, false);
+    this.prepareTargetElement();
+    this.prepareDelay("nextStringDelay");
+    this.prepareDelay("loopDelay");
 
-    this.setOptions(options, this.defaults, false);
-    this.init();
-  }
-
-  init() {
-    this.checkElement();
-
-    this.options.strings = this.toArray(this.options.strings);
-
-    //-- We don't have anything. Get out of here.
-    if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+    if (!this.prepareStrings()) {
       return;
     }
 
-    this.element.innerHTML =
-      '<i class="ti-placeholder" style="display:inline-block;width:0;line-height:0;overflow:hidden;">.</i><span ' +
-      this.style +
-      ' class="ti-container"></span>';
-
-    this.id = this.generateHash();
-    this.element.dataset["typeitid"] = this.id;
-    this.elementContainer = this.element.querySelector("span");
+    this.prepareDOM();
 
     if (this.options.startDelete) {
       this.insert(this.stringsToDelete);
       this.queue.push([this.delete]);
-      this.insertPauseIntoQueue(1);
+      this.insertSplitPause(1);
     }
 
     this.generateQueue();
-    this.kickoff();
-  }
 
-  generateQueue() {
-    for (let i = 0; i < this.options.strings.length; i++) {
-      this.queue.push([this.type, this.options.strings[i]]);
-
-      if (i < this.options.strings.length - 1) {
-        this.queue.push([this.options.breakLines ? this.break : this.delete]);
-        this.insertPauseIntoQueue(this.queue.length);
-      }
+    if (this.autoInit) {
+      this.init();
     }
   }
 
-  insertPauseIntoQueue(position) {
-    let halfDelay = this.options.nextStringDelay / 2;
-    this.queue.splice(position - 1, 0, [this.pause, halfDelay]);
-    this.queue.splice(position + 2, 0, [this.pause, halfDelay]);
-  }
+  /**
+   * Prepares strings for processing.
+   */
+  prepareStrings() {
+    this.options.strings = toArray(this.options.strings);
+    this.options.strings = removeComments(this.options.strings);
 
-  kickoff() {
-    this.cursor();
-
-    if (this.options.autoStart) {
-      this.startQueue();
-    } else {
-      if (this.isVisible()) {
-        this.hasStarted = true;
-        this.startQueue();
-      } else {
-        let that = this;
-
-        window.addEventListener("scroll", function checkForStart(event) {
-          if (that.isVisible() && !that.hasStarted) {
-            that.hasStarted = true;
-            that.startQueue();
-            event.currentTarget.removeEventListener(event.type, checkForStart);
-          }
-        });
-      }
-    }
-  }
-
-  startQueue() {
-    setTimeout(() => {
-      this.executeQueue();
-    }, this.options.startDelay);
-  }
-
-  isVisible() {
-    let coordinates = this.element.getBoundingClientRect();
-
-    let viewport = {
-      height:
-        window.innerHeight ||
-        document.documentElement.clientHeight ||
-        document.body.clientHeight,
-      width:
-        window.innerWidth ||
-        document.documentElement.clientWidth ||
-        document.body.clientWidth
-    };
-
-    //-- Element extends outside of viewport.
-    if (
-      coordinates.right > viewport.width ||
-      coordinates.bottom > viewport.height
-    ) {
-      return false;
-    }
-
-    //-- Top or left aren't visible.
-    if (coordinates.top < 0 || coordinates.left < 0) {
+    //-- We don't have anything. Get out of here.
+    if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
       return false;
     }
 
     return true;
   }
 
-  generateHash() {
-    return (
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15)
-    );
+  /**
+   * Performs DOM-related work to prepare for typing.
+   */
+  prepareDOM() {
+    this.element.innerHTML = `
+        <span style="${this.style}" class="ti-container"></span>
+      `;
+    this.element.setAttribute("data-typeitid", this.id);
+    this.elementContainer = this.element.querySelector("span");
   }
 
-  cursor() {
-    if (!this.options.cursor) return;
-
-    let hash = this.generateHash();
-
-    let styleBlock = document.createElement("style");
-
-    let styles = `
-          @keyframes blink-${hash} {
-            0% {opacity: 0}
-            49%{opacity: 0}
-            50% {opacity: 1}
-          }
-
-          [data-typeitid='${this.id}'] .ti-cursor {
-            animation: blink-${hash} ${this.options.cursorSpeed /
-      1000}s infinite;
-          }
-        `;
-
-    styleBlock.appendChild(document.createTextNode(styles));
-
-    document.head.appendChild(styleBlock);
-
-    this.element.insertAdjacentHTML(
-      "beforeend",
-      "<span " + this.style + 'class="ti-cursor">|</span>'
+  /**
+   * Reset the instance to new status.
+   */
+  reset() {
+    return new Instance(
+      this.element,
+      this.id,
+      this.options,
+      this.autoInit,
+      this.typeit
     );
   }
 
   /**
-   * Appends string to element container.
+   * If argument is passed, set to content according to `html` option.
+   * If not, just return the contents of the element, based on `html` option.
+   * @param {string | null} content
+   */
+  contents(content = null) {
+    //-- Just return the contents of the element.
+    if (content === null) {
+      return this.options.html
+        ? this.elementContainer.innerHTML
+        : this.elementContainer.innerText;
+    }
+
+    this.elementContainer[
+      this.options.html ? "innerHTML" : "innerText"
+    ] = content;
+
+    return content;
+  }
+
+  prepareDelay(delayType) {
+    let delay = this.options[delayType];
+
+    if (!delay) return;
+
+    let isArray = Array.isArray(delay);
+    let halfDelay = !isArray ? delay / 2 : null;
+
+    this.options[delayType] = {
+      before: isArray ? delay[0] : halfDelay,
+      after: isArray ? delay[1] : halfDelay,
+      total: isArray ? delay[0] + delay[1] : delay
+    };
+  }
+
+  generateQueue(initialStep = null) {
+    initialStep =
+      initialStep === null
+        ? [this.pause, this.options.startDelay]
+        : initialStep;
+
+    this.queue.push(initialStep);
+
+    this.options.strings.forEach((string, index) => {
+      this.queueString(string);
+
+      //-- This is the last string. Get outta here.
+      if (index + 1 === this.options.strings.length) return;
+
+      if (this.options.breakLines) {
+        this.queue.push([this.break]);
+        this.insertSplitPause(this.queue.length);
+        return;
+      }
+
+      this.queueDeletions(string);
+      this.insertSplitPause(this.queue.length, string.length);
+    });
+  }
+
+  /**
+   * Delete each character from a string.
+   */
+  queueDeletions(stringOrNumber = null) {
+    let number =
+      typeof stringOrNumber === "string"
+        ? stringOrNumber.length
+        : stringOrNumber;
+
+    for (let i = 0; i < number; i++) {
+      this.queue.push([this.delete, 1]);
+    }
+  }
+
+  /**
+   * Add steps to the queue for each character in a given string.
+   */
+  queueString(string, rake = true) {
+    if (!string) return;
+
+    string = toArray(string);
+
+    var doc = document.implementation.createHTMLDocument("");
+    doc.body.innerHTML = string;
+
+    //-- If it's designated, rake that bad boy for HTML tags and stuff.
+    if (rake) {
+      string = this.rake(string);
+      string = string[0];
+    }
+
+    //-- @todo Improve this check by using regex.
+    //-- If an opening HTML tag is found and we're not already printing inside a tag
+    if (
+      this.options.html &&
+      (startsWith(string[0], "<") && !startsWith(string[0], "</"))
+    ) {
+      //-- Create node of that string name, by regexing for the closing tag.
+      let matches = string[0].match(/\<(.*?)\>/);
+      let doc = document.implementation.createHTMLDocument("");
+      doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
+
+      //-- Add to the queue.
+      this.queue.push([this.type, doc.body.children[0]]);
+    } else {
+      this.queue.push([this.type, string[0]]);
+    }
+
+    //-- Shorten it by one character.
+    string.splice(0, 1);
+
+    //-- If rake is true, this is the first time we've queued this string.
+    if (rake) {
+      this.queue[this.queue.length - 1].push("first-of-string");
+    }
+
+    //-- If there's more to it, run again until fully printed.
+    if (string.length) {
+      this.queueString(string, false);
+      return;
+    }
+
+    //-- End of string!
+    this.queue[this.queue.length - 1].push("last-of-string");
+  }
+
+  /**
+   * Insert a split pause around a range of queue items.
+   *
+   * @param  {Number} startPosition The position at which to start wrapping.
+   * @param  {Number} numberOfActionsToWrap The number of actions in the queue to wrap.
+   * @return {void}
+   */
+  insertSplitPause(startPosition, numberOfActionsToWrap = 1) {
+    this.queue.splice(startPosition, 0, [
+      this.pause,
+      this.options.nextStringDelay.before
+    ]);
+    this.queue.splice(startPosition - numberOfActionsToWrap, 0, [
+      this.pause,
+      this.options.nextStringDelay.after
+    ]);
+  }
+
+  init() {
+    if (this.hasStarted) return;
+
+    this.cursor();
+
+    if (this.options.autoStart) {
+      this.hasStarted = true;
+      this.next();
+      return;
+    }
+
+    if (isVisible(this.element)) {
+      this.hasStarted = true;
+      this.next();
+      return;
+    }
+
+    let that = this;
+
+    function checkForStart(event) {
+      if (isVisible(that.element) && !that.hasStarted) {
+        that.hasStarted = true;
+        that.next();
+        event.currentTarget.removeEventListener(event.type, checkForStart);
+      }
+    }
+
+    window.addEventListener("scroll", checkForStart);
+  }
+
+  cursor() {
+    let visibilityStyle = "visibility: hidden;";
+
+    if (this.options.cursor) {
+      let styleBlock = document.createElement("style");
+
+      styleBlock.id = this.id;
+
+      let styles = `
+            @keyframes blink-${this.id} {
+              0% {opacity: 0}
+              49% {opacity: 0}
+              50% {opacity: 1}
+            }
+
+            [data-typeitid='${this.id}'] .ti-cursor {
+              animation: blink-${this.id} ${this.options.cursorSpeed /
+        1000}s infinite;
+            }
+          `;
+
+      styleBlock.appendChild(document.createTextNode(styles));
+
+      document.head.appendChild(styleBlock);
+
+      visibilityStyle = "";
+    }
+
+    this.element.insertAdjacentHTML(
+      "beforeend",
+      `<span style="${this.style}${visibilityStyle}" class="ti-cursor">${
+        this.options.cursorChar
+      }</span>`
+    );
+  }
+
+  /**
+   * Inserts string to element container.
    */
   insert(content, toChildNode = false) {
     if (toChildNode) {
@@ -187,42 +305,46 @@ export default class Instance {
     } else {
       this.elementContainer.insertAdjacentHTML("beforeend", content);
     }
-  }
 
-  /**
-   * Converts a string to an array, if it's not already.
-   *
-   * @return array
-   */
-  toArray(string) {
-    return string.constructor === Array
-      ? string.slice(0)
-      : string.split("<br>");
+    this.contents(
+      this.contents()
+        .split("")
+        .join("")
+    );
   }
 
   /**
    * Depending on if we're starting by deleting an existing string or typing
    * from nothing, set a specific variable to what's in the HTML.
    */
-  checkElement() {
+  prepareTargetElement() {
+    //-- If any of the existing children nodes have .ti-container, clear it out because this is a remnant of a previous instance.
+    [].slice.call(this.element.childNodes).forEach(node => {
+      if (node.classList === undefined) return;
+
+      if (node.classList.contains("ti-container")) {
+        this.element.innerHTML = "";
+      }
+    });
+
+    //-- Set the hard-coded string as the string(s) we'll type.
     if (!this.options.startDelete && this.element.innerHTML.length > 0) {
       this.options.strings = this.element.innerHTML.trim();
-    } else {
-      this.stringsToDelete = this.element.innerHTML;
+      return;
     }
+
+    this.stringsToDelete = this.element.innerHTML;
   }
 
   break() {
     this.insert("<br>");
-    this.executeQueue();
+    this.next();
   }
 
-  pause(time) {
-    time = time === undefined ? this.options.nextStringDelay : time;
-
+  pause(time = false) {
     setTimeout(() => {
-      this.executeQueue();
-    }, time);
+      this.next();
+    }, time ? time : this.options.nextStringDelay.total);
   }
 
   /*
@@ -237,112 +359,40 @@ export default class Instance {
 
       //-- If we're parsing HTML, group tags into their own array items.
       if (this.options.html) {
-        let tPosition = [];
-        let tag;
-        let isEntity = false;
-
-        for (let j = 0; j < item.length; j++) {
-          if (item[j] === "<" || item[j] === "&") {
-            tPosition[0] = j;
-            isEntity = item[j] === "&";
-          }
-
-          if (item[j] === ">" || (item[j] === ";" && isEntity)) {
-            tPosition[1] = j;
-            j = 0;
-            tag = item.slice(tPosition[0], tPosition[1] + 1).join("");
-            item.splice(tPosition[0], tPosition[1] - tPosition[0] + 1, tag);
-            isEntity = false;
-          }
-        }
+        return groupHTMLTags(item);
       }
 
       return item;
     });
   }
 
-  print(character) {
-    if (this.inTag) {
-      this.insert(character, true);
+  type(character) {
+    this.setPace();
 
-      if (this.tagCount < this.tagDuration) {
-        this.tagCount++;
-      } else {
-        this.inTag = false;
-      }
-    } else {
-      this.insert(character);
-    }
-  }
-
-  /**
-   * Pass in a string, and loop over that string until empty. Then return true.
-   */
-  type(string, rake = true) {
-    string = this.toArray(string);
-
-    //-- If it's designated, rake that bad boy for HTML tags and stuff.
-    if (rake) {
-      string = this.rake(string);
-      string = string[0];
-    }
-
-    this.typingTimeout = setTimeout(() => {
-      //-- Randomize the timeout each time, if that's your thing.
-      this.setPace(this);
-
-      //-- If an opening HTML tag is found and we're not already printing inside a tag
-      if (
-        this.options.html &&
-        (string[0].indexOf("<") !== -1 && string[0].indexOf("</") === -1) &&
-        !this.inTag
-      ) {
-        //-- loop the string to find where the tag ends
-        for (let i = string.length - 1; i >= 0; i--) {
-          if (string[i].indexOf("</") !== -1) {
-            this.tagCount = 1;
-            this.tagDuration = i;
-          }
-        }
-
-        this.inTag = true;
-
-        //-- Create node of that string name.
-        let matches = string[0].match(/\<(.*?)\>/);
-        let doc = document.implementation.createHTMLDocument();
-        doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
-
-        //-- Add that new node to the element.
-        this.elementContainer.appendChild(doc.body.children[0]);
-      } else {
-        this.print(string[0]);
+    this.timeouts[0] = setTimeout(() => {
+      //-- We must have an HTML tag!
+      if (typeof character !== "string") {
+        character.innerHTML = "";
+        this.elementContainer.appendChild(character);
+        this.isInTag = true;
+        this.next();
+        return;
       }
 
-      //-- Shorten it by one character.
-      string.splice(0, 1);
-
-      //-- If there's more to it, run again until fully printed.
-      if (string.length) {
-        this.type(string, false);
-      } else {
-        this.executeQueue();
+      //-- When we hit the end of the tag, turn it off!
+      if (startsWith(character, "</")) {
+        this.isInTag = false;
+        this.next();
+        return;
       }
+
+      this.insert(character, this.isInTag);
+
+      this.next();
     }, this.typePace);
   }
 
-  /**
-   * Removes helper elements with certain classes from the TypeIt element.
-   */
-  removeHelperElements() {
-    let helperElements = this.element.querySelectorAll(
-      ".ti-container, .ti-cursor, .ti-placeholder"
-    );
-    [].forEach.call(helperElements, helperElement => {
-      this.element.removeChild(helperElement);
-    });
-  }
-
-  setOptions(settings, defaults = null, autoExecuteQueue = true) {
+  setOptions(settings, defaults = null, autonext = true) {
     let mergedSettings = {};
 
     if (defaults === null) {
@@ -359,41 +409,33 @@ export default class Instance {
 
     this.options = mergedSettings;
 
-    if (autoExecuteQueue) {
-      this.executeQueue();
+    if (autonext) {
+      this.next();
     }
-  }
-
-  randomInRange(value, range) {
-    return Math.abs(
-      Math.random() * (value + range - (value - range)) + (value - range)
-    );
   }
 
   setPace() {
     let typeSpeed = this.options.speed;
     let deleteSpeed =
-      this.options.deleteSpeed !== undefined
+      this.options.deleteSpeed !== null
         ? this.options.deleteSpeed
         : this.options.speed / 3;
     let typeRange = typeSpeed / 2;
     let deleteRange = deleteSpeed / 2;
 
     this.typePace = this.options.lifeLike
-      ? this.randomInRange(typeSpeed, typeRange)
+      ? randomInRange(typeSpeed, typeRange)
       : typeSpeed;
     this.deletePace = this.options.lifeLike
-      ? this.randomInRange(deleteSpeed, deleteRange)
+      ? randomInRange(deleteSpeed, deleteRange)
       : deleteSpeed;
   }
 
   delete(chars = null) {
-    this.deleteTimeout = setTimeout(() => {
+    this.timeouts[1] = setTimeout(() => {
       this.setPace();
 
-      let textArray = this.elementContainer.innerHTML.split("");
-
-      let amount = chars === null ? textArray.length - 1 : chars + 1;
+      let textArray = this.contents().split("");
 
       //-- Cut the array by a character.
       for (let n = textArray.length - 1; n > -1; n--) {
@@ -436,12 +478,8 @@ export default class Instance {
       }
 
       //-- If we've found an empty set of HTML tags...
-      if (this.elementContainer.innerHTML.indexOf("></") > -1) {
-        for (
-          let i = this.elementContainer.innerHTML.indexOf("></") - 2;
-          i >= 0;
-          i--
-        ) {
+      if (this.options.html && this.contents().indexOf("></") > -1) {
+        for (let i = this.contents().indexOf("></") - 2; i >= 0; i--) {
           if (textArray[i] === "<") {
             textArray.splice(i, textArray.length - i);
             break;
@@ -449,50 +487,87 @@ export default class Instance {
         }
       }
 
-      this.elementContainer.innerHTML = textArray.join("");
+      //-- Make the content a string again, AND strip out any empty HTML tags.
+      //-- We want do strip empty tags here and ONLY here because when we're
+      //-- typing new content inside an HTML tag, there is momentarily an empty
+      //-- tag we want to keep.
+      this.contents(textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, ""));
 
-      //-- Characters still in the string.
-      if (amount > (chars === null ? 0 : 2)) {
-        this.delete(chars === null ? null : chars - 1);
-      } else {
-        this.executeQueue();
+      //-- Delete again! Don't call directly, to respect possible pauses.
+      if (chars === null) {
+        this.queue.unshift([this.delete, textArray.length]);
       }
+
+      if (chars > 1) {
+        this.queue.unshift([this.delete, chars - 1]);
+      }
+
+      this.next();
     }, this.deletePace);
   }
 
   /*
-    Empty the existing text, clearing it instantly.
+  * Empty the existing text, clearing it instantly.
   */
   empty() {
-    this.elementContainer.innerHTML = "";
-    this.executeQueue();
+    this.contents("");
+    this.next();
   }
 
-  executeQueue() {
-    if (this.queueIndex < this.queue.length) {
-      let thisFunc = this.queue[this.queueIndex];
-      this.queueIndex++;
+  next() {
+    if (this.isFrozen) {
+      return;
+    }
 
-      //-- Delay execution if looping back to the beginning of the queue.
-      if (this.isLooping && this.queueIndex === 1) {
-        setTimeout(() => {
-          thisFunc[0].call(this, thisFunc[1]);
-        }, this.options.loopDelay / 2);
-      } else {
-        thisFunc[0].call(this, thisFunc[1]);
+    //-- We haven't reached the end of the queue, go again.
+    if (this.queue.length > 0) {
+      this.step = this.queue.shift();
+
+      if (this.step[2] === "first-of-string" && this.options.beforeString) {
+        this.options.beforeString(this.step, this.queue, this.typeit);
+      }
+
+      if (this.options.beforeStep) {
+        this.options.beforeStep(this.step, this.queue, this.typeit);
+      }
+
+      //-- Execute this step!
+      this.step[0].call(this, this.step[1], this.step[2]);
+
+      if (this.step[2] === "last-of-string" && this.options.afterString) {
+        this.options.afterString(this.step, this.queue, this.typeit);
+      }
+
+      if (this.options.afterStep) {
+        this.options.afterStep(this.step, this.queue, this.typeit);
       }
 
       return;
     }
 
-    this.options.callback();
+    //-- @todo: Remove in next major release.
+    if (this.options.callback) {
+      this.options.callback();
+    }
+
+    if (this.options.afterComplete) {
+      this.options.afterComplete(this.typeit);
+    }
 
     if (this.options.loop) {
-      this.queueIndex = 0;
-      this.isLooping = true;
+      let delay = this.options.loopDelay
+        ? this.options.loopDelay
+        : this.options.nextStringDelay;
+      this.queueDeletions(this.contents());
+      this.generateQueue([this.pause, delay.before]);
+
       setTimeout(() => {
-        this.delete();
-      }, this.options.loopDelay / 2);
+        this.next();
+      }, delay.after);
+
+      return;
     }
+
+    this.isComplete = true;
   }
 }
