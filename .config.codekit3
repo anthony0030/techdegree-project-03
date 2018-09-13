@@ -6777,6 +6777,16 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"\/bower_components\/typeit\/src\/core.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "\/docs\/bower_components\/typeit\/src\/core.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"\/bower_components\/typeit\/src\/defaults.js": {
 		"ft": 64,
 		"ma": 0,
@@ -7272,7 +7282,7 @@
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-girlfriend",
 	"iconImageWasSetByUser": 0,
-	"lastBuiltDate": 558538150
+	"lastBuiltDate": 558538314
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,

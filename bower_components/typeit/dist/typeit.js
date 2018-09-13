@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.10.1
+ *   Version: v5.10.5
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -31,6 +31,15 @@
 
   function randomInRange(value, range) {
     return Math.abs(Math.random() * (value + range - (value - range)) + (value - range));
+  }
+
+  function appendStyleBlock(styles) {
+    var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+    var styleBlock = document.createElement("style");
+    styleBlock.id = id;
+    styleBlock.appendChild(document.createTextNode(styles));
+    document.head.appendChild(styleBlock);
   }
 
   function generateHash() {
@@ -128,14 +137,39 @@
     };
   }();
 
+  var inherits = function (subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  };
+
+  var possibleConstructorReturn = function (self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  };
+
   var Instance = function () {
     function Instance(element, id, options, autoInit, typeit) {
       classCallCheck(this, Instance);
 
-      this.typeit = typeit;
-      this.timeouts = [];
       this.id = id;
+      this.typeit = typeit;
       this.autoInit = autoInit;
+      this.element = element;
+      this.timeouts = [];
       this.hasStarted = false;
       this.isFrozen = false;
       this.isComplete = false;
@@ -143,26 +177,27 @@
       this.queue = [];
       this.isInTag = false;
       this.stringsToDelete = "";
-      this.style = "display:inline;position:relative;font:inherit;color:inherit;";
-      this.element = element;
+      this.inlineStyles = {
+        base: "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
+        cursor: "position:absolute;bottom:0;left:calc(100%+.15em);line-height:normal;"
+      };
       this.setOptions(options, window.TypeItDefaults, false);
       this.prepareTargetElement();
       this.prepareDelay("nextStringDelay");
       this.prepareDelay("loopDelay");
-
-      if (!this.prepareStrings()) {
-        return;
-      }
-
       this.prepareDOM();
+      this.prepareStrings();
 
-      if (this.options.startDelete) {
+      if (this.options.startDelete && this.stringsToDelete) {
         this.insert(this.stringsToDelete);
         this.queue.push([this.delete]);
         this.insertSplitPause(1);
       }
 
       this.generateQueue();
+
+      //-- We have no strings! So, don't do anything.
+      if (!this.options.strings.length || !this.options.strings[0]) return;
 
       if (this.autoInit) {
         this.init();
@@ -177,15 +212,7 @@
     createClass(Instance, [{
       key: "prepareStrings",
       value: function prepareStrings() {
-        this.options.strings = toArray(this.options.strings);
-        this.options.strings = removeComments(this.options.strings);
-
-        //-- We don't have anything. Get out of here.
-        if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
-          return false;
-        }
-
-        return true;
+        this.options.strings = removeComments(toArray(this.options.strings));
       }
 
       /**
@@ -195,9 +222,12 @@
     }, {
       key: "prepareDOM",
       value: function prepareDOM() {
-        this.element.innerHTML = "\n        <span style=\"" + this.style + "\" class=\"ti-container\"></span>\n      ";
+        this.element.innerHTML = "\n      <span style=\"" + this.inlineStyles.base + "\" class=\"ti-wrapper\">\n        <span style=\"" + this.inlineStyles.base + "\" class=\"ti-container\"></span>\n      </span>\n      ";
         this.element.setAttribute("data-typeitid", this.id);
-        this.elementContainer = this.element.querySelector("span");
+        this.elementContainer = this.element.querySelector(".ti-container");
+        this.elementWrapper = this.element.querySelector(".ti-wrapper");
+
+        appendStyleBlock("\n        ." + this.elementContainer.className + ":before {\n          content: '.';\n          display: inline-block;\n          width: 0;\n          visibility: hidden;\n        }\n      ");
       }
 
       /**
@@ -308,11 +338,10 @@
 
         //-- If it's designated, rake that bad boy for HTML tags and stuff.
         if (rake) {
-          string = this.rake(string);
-          string = string[0];
+          string = this.rake(string)[0];
         }
 
-        //-- @todo Improve this check by using regex.
+        //-- @todo Improve this check by using regex (rather than startsWith() checks).
         //-- If an opening HTML tag is found and we're not already printing inside a tag
         if (this.options.html && startsWith(string[0], "<") && !startsWith(string[0], "</")) {
           //-- Create node of that string name, by regexing for the closing tag.
@@ -397,20 +426,12 @@
         var visibilityStyle = "visibility: hidden;";
 
         if (this.options.cursor) {
-          var styleBlock = document.createElement("style");
-
-          styleBlock.id = this.id;
-
-          var styles = "\n            @keyframes blink-" + this.id + " {\n              0% {opacity: 0}\n              49% {opacity: 0}\n              50% {opacity: 1}\n            }\n\n            [data-typeitid='" + this.id + "'] .ti-cursor {\n              animation: blink-" + this.id + " " + this.options.cursorSpeed / 1000 + "s infinite;\n            }\n          ";
-
-          styleBlock.appendChild(document.createTextNode(styles));
-
-          document.head.appendChild(styleBlock);
+          appendStyleBlock("\n        @keyframes blink-" + this.id + " {\n          0% {opacity: 0}\n          49% {opacity: 0}\n          50% {opacity: 1}\n        }\n\n        [data-typeitid='" + this.id + "'] .ti-cursor {\n          animation: blink-" + this.id + " " + this.options.cursorSpeed / 1000 + "s infinite;\n        }\n      ", this.id);
 
           visibilityStyle = "";
         }
 
-        this.element.insertAdjacentHTML("beforeend", "<span style=\"" + this.style + visibilityStyle + "\" class=\"ti-cursor\">" + this.options.cursorChar + "</span>");
+        this.elementWrapper.insertAdjacentHTML("beforeend", "<span style=\"" + this.inlineStyles.base + this.inlineStyles.cursor + visibilityStyle + "\" class=\"ti-cursor\">" + this.options.cursorChar + "</span>");
       }
 
       /**
@@ -715,10 +736,10 @@
     return Instance;
   }();
 
-  var TypeIt = function () {
-    function TypeIt(element, args) {
+  var Core = function () {
+    function Core(element, args) {
       var autoInit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-      classCallCheck(this, TypeIt);
+      classCallCheck(this, Core);
 
       this.id = generateHash();
       this.instances = [];
@@ -744,7 +765,7 @@
       this.generateInstances();
     }
 
-    createClass(TypeIt, [{
+    createClass(Core, [{
       key: "generateInstances",
       value: function generateInstances() {
         var _this = this;
@@ -767,14 +788,35 @@
       value: function queueUp(action) {
         var argument = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
+        this.init(true);
+
         this.instances.forEach(function (instance) {
           instance.queue.push([instance[action], argument]);
 
           if (instance.isComplete === true) {
             instance.next();
           }
+
+          //-- We KNOW we have items to process now, so make sure we set this to false.
+          instance.isComplete = false;
         });
       }
+    }]);
+    return Core;
+  }();
+
+  var TypeIt = function (_Core) {
+    inherits(TypeIt, _Core);
+
+    function TypeIt(element, args) {
+      var autoInit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+      classCallCheck(this, TypeIt);
+      return possibleConstructorReturn(this, (TypeIt.__proto__ || Object.getPrototypeOf(TypeIt)).call(this, element, args, autoInit));
+    }
+
+    createClass(TypeIt, [{
+      key: "type",
+
 
       /**
        * If used after typing has started, will append strings to the end of the existing queue. If used when typing is paused, will restart it.
@@ -782,11 +824,10 @@
        * @param  {string} string The string to be typed.
        * @return {object} TypeIt instance
        */
-
-    }, {
-      key: "type",
       value: function type() {
         var string = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+
+        this.init(true);
 
         this.instances.forEach(function (instance) {
           //-- Queue up a string right off the bat.
@@ -795,6 +836,9 @@
           if (instance.isComplete === true) {
             instance.next();
           }
+
+          //-- We KNOW we have items to process now, so make sure we set this to false.
+          instance.isComplete = false;
         });
 
         return this;
@@ -871,7 +915,7 @@
           instance.timeouts = [];
 
           if (removeCursor && instance.options.cursor) {
-            instance.element.removeChild(instance.element.querySelector(".ti-cursor"));
+            instance.elementWrapper.removeChild(instance.elementWrapper.querySelector(".ti-cursor"));
           }
 
           instance.hasBeenDestroyed = true;
@@ -892,8 +936,17 @@
     }, {
       key: "init",
       value: function init() {
+        var requireAutoInit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
         this.instances.forEach(function (instance) {
-          instance.init();
+          if (!requireAutoInit) {
+            instance.init();
+            return;
+          }
+
+          if (instance.autoInit) {
+            instance.init();
+          }
         });
       }
     }, {
@@ -926,7 +979,7 @@
       }
     }]);
     return TypeIt;
-  }();
+  }(Core);
 
   return TypeIt;
 
