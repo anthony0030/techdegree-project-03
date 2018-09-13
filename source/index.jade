@@ -27,11 +27,11 @@ html(lang='en')
             
             .form-group
               label(for="name" id="name_label") Full Name
-              input(type="text" name="user_name" id="name" placeholder="Required" data-parsley-errors-messages-disabled data-parsley-trigger="change" required minlength="1" onchange="show_star('name_label')")
+              input(type="text" name="user_name" id="name" placeholder="Required" data-parsley-errors-messages-disabled data-parsley-trigger="change" required minlength="1" onchange="show_star('name_label', this)")
             
             .form-group
               label(for="email" id="email_label") Email Address
-              input(type="text" name="user_email" id="email" data-parsley-type="email" placeholder="Required" required data-inputmask="'alias': 'email'" data-parsley-trigger="change" data-parsley-errors-messages-disabled onchange="show_star('email_label')")
+              input(type="text" name="user_email" id="email" data-parsley-type="email" placeholder="Required" required data-inputmask="'alias': 'email'" data-parsley-trigger="change" data-parsley-errors-messages-disabled onchange="show_star('email_label', this)")
 
             .form-group
               label(for="phone") Phone Number

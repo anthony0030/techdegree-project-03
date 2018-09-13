@@ -12,9 +12,9 @@ $(document).ready(function() {
   $('#form').parsley();
 });
 
-function show_star(self){
+function show_star(self, trigger){
+  trigger.setAttribute('onchange', '')
   document.getElementById(self).innerHTML += "<span class='red'> *</span>";
-  document.getElementById(self).removeAttribute("id");
 }
 
 new TypeIt('.type-it');
