@@ -12,7 +12,7 @@ $(document).ready(function() {
   $("#form").parsley();
 });
 
-function show_star(self, trigger){
+function showStar(self, trigger){
   trigger.setAttribute("onchange", "")
   document.getElementById(self).innerHTML += "<span class='red'> *</span>";
 }
