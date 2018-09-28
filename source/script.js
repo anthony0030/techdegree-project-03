@@ -13,7 +13,7 @@ $(document).ready(function() {
 });
 
 function showStar(self, trigger){
-  trigger.setAttribute("onchange", "")
+  trigger.setAttribute("onchange", "");
   document.getElementById(self).innerHTML += "<span class='red'> *</span>";
 }
 
