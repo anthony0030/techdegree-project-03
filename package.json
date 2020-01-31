@@ -1,0 +1,20 @@
+{
+  "description": "CodeKit created this starter package.json file. You should customize it appropriately.",
+  "repository": {},
+  "license": "UNLICENSED",
+  "version": "1.0.0",
+  "optionalDependencies": {},
+  "name": "codekit-project",
+  "devDependencies": {},
+  "dependencies": {
+    "@openfonts/merriweather_all": "^1.44.0",
+    "inputmask": "^5.0.3",
+    "jquery.inputmask": "^3.3.4",
+    "normalize.css": "^8.0.1",
+    "parsleyjs": "^2.8.0",
+    "pickadate": "^3.5.6",
+    "typeit": "^5.10.5"
+  },
+  "scripts": {},
+  "author": ""
+}

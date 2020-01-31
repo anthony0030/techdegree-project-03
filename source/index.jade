@@ -1,15 +1,15 @@
 doctype html
-html(lang='en')
+html(lang="en")
   head
     title Online Registration Form
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css')
-    link(href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet")
-    link(rel='stylesheet', href='css/styles.css')
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/node_modules/normalize.css/normalize.css")
+    link(rel="stylesheet", href="/node_modules/@openfonts/merriweather_all/index.css")
+    link(rel="stylesheet", href="css/styles.css")
     include _favicon
-    link(rel="stylesheet" href="bower_components/pickadate/lib/themes/default.css" )
-    link(rel="stylesheet" href="bower_components/pickadate/lib/themes/default.date.css")
+    link(rel="stylesheet" href="node_modules/pickadate/lib/themes/default.css" )
+    link(rel="stylesheet" href="node_modules/pickadate/lib/themes/default.date.css")
   body
     header
       h1
@@ -24,11 +24,11 @@ html(lang='en')
           fieldset
             legend
               h3 Contact Information
-            
+
             .form-group
               label(for="name" id="name_label") Full Name
               input(type="text" name="user_name" id="name" placeholder="Required" data-parsley-errors-messages-disabled data-parsley-trigger="change" required minlength="1" onchange="showStar('name_label', this)")
-            
+
             .form-group
               label(for="email" id="email_label") Email Address
               input(type="text" name="user_email" id="email" data-parsley-type="email" placeholder="Required" required data-inputmask="'alias': 'email'" data-parsley-trigger="change" data-parsley-errors-messages-disabled onchange="showStar('email_label', this)")
@@ -121,7 +121,7 @@ html(lang='en')
           fieldset
             legend
               h3 Newsletter
-            h4 Select the newsletters you would like to recive
+            h4 Select the newsletters you would like to receive
 
             ul
               li
@@ -140,36 +140,29 @@ html(lang='en')
               li
                 input(type="radio" id="format_html" name="format" value="format_html" checked)
                 label(for="format_html") HTML
-            
+
               li
                 input(type="radio" id="format_text" name="format" value="format_text")
                 label(for="format_text") Plain text
-            
+
             div.more_info
               label(for="more_info") Other topics you'd like to hear about
               textarea(id="more_info" name="user_more_info")
 
         button(type="submit") Sign Up
     footer Copyright The code Review
-        
-    //- jQuery
-    script(src='bower_components/jquery/dist/jquery.js')
-    //- input masking
-    script(src='bower_components/inputmask/dist/inputmask/inputmask.js')
-    script(src='bower_components/inputmask/dist/inputmask/inputmask.extensions.js')
-    script(src='bower_components/inputmask/dist/inputmask/inputmask.numeric.extensions.js')
-    script(src='bower_components/inputmask/dist/inputmask/inputmask.date.extensions.js')
-    script(src='bower_components/inputmask/dist/inputmask/inputmask.phone.extensions.js')
-    script(src='bower_components/inputmask/dist/inputmask/jquery.inputmask.js')
-    script(src="bower_components/inputmask/dist/inputmask/bindings/inputmask.binding.js")
-    //-  date piker
-    script(src="bower_components/pickadate/lib/picker.js")
-    script(src="bower_components/pickadate/lib/picker.date.js")
-    script(src="bower_components/pickadate/lib/legacy.js")
-    //-  parsley.js
-    script(src="bower_components/parsleyjs/dist/parsley.min.js")
-    //- typeit
-    script(src="bower_components/typeit/dist/typeit.min.js")
 
-    //- Custom 
+    //- jQuery
+    script(src='node_modules/jquery/dist/jquery.js')
+    //- input masking
+    script(src='node_modules/inputmask/dist/inputmask/jquery.inputmask.js')
+    //-  date piker
+    script(src="node_modules/pickadate/lib/picker.js")
+    script(src="node_modules/pickadate/lib/picker.date.js")
+    script(src="node_modules/pickadate/lib/legacy.js")
+    //-  parsley.js
+    script(src="node_modules/parsleyjs/dist/parsley.min.js")
+    //- typeit
+    script(src="node_modules/typeit/dist/typeit.min.js")
+    //- Custom
     script(src='script.js')
