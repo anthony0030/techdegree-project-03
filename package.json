@@ -1,11 +1,13 @@
 {
-  "description": "CodeKit created this starter package.json file. You should customize it appropriately.",
-  "repository": {},
-  "license": "UNLICENSED",
+  "name": "techdegree-project-03",
   "version": "1.0.0",
-  "optionalDependencies": {},
-  "name": "codekit-project",
-  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://anthony0030@github.com/anthony0030/techdegree-project-03.git"
+  },
+  "author": "Anthony Veaudry",
+  "license": "UNLICENSED",
+  "homepage": "https://anthony0030.github.io/techdegree-project-03",
   "dependencies": {
     "@openfonts/merriweather_all": "^1.44.0",
     "inputmask": "^5.0.3",
@@ -14,7 +16,5 @@
     "parsleyjs": "^2.8.0",
     "pickadate": "^3.5.6",
     "typeit": "^6.1.2"
-  },
-  "scripts": {},
-  "author": ""
+  }
 }
