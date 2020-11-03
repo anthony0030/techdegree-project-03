@@ -29,7 +29,7 @@
 		"ft": 524288,
 		"oA": 1,
 		"oAP": "/docs/.vscode/settings-min.json",
-		"oF": 0,
+		"oF": 1,
 		"oO": 0,
 		"oS": 1
 		},
@@ -521,7 +521,7 @@
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-girlfriend",
 	"iconImageWasSetByUser": 0,
-	"lastBuiltDate": 626084020.84624302
+	"lastBuiltDate": 626084958.80923903
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
