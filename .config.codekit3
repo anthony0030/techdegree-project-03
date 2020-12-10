@@ -404,13 +404,13 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/docs/favicon/favicon.ico",
-		"oF": 1
+		"oF": 3
 		},
 	"/source/favicon/manifest.json": {
 		"ft": 524288,
 		"oA": 2,
-		"oAP": "/docs/favicon/manifest-min.json",
-		"oF": 1,
+		"oAP": "/docs/favicon/manifest.json",
+		"oF": 3,
 		"oO": 0,
 		"oS": 1
 		},
@@ -529,7 +529,7 @@
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-girlfriend",
 	"iconImageWasSetByUser": 0,
-	"lastBuiltDate": 629291089.15577495
+	"lastBuiltDate": 629291920.29183996
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
