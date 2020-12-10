@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 
   $(".datepicker").pickadate({
     format: "dd/mm/yyyy",
@@ -10,11 +10,10 @@ $(document).ready(function() {
   });
 
   $("#form").parsley();
+
 });
 
 function showStar(self, trigger){
   trigger.setAttribute("onchange", "");
   document.getElementById(self).innerHTML += "<span class='red'> *</span>";
 }
-
-new TypeIt(".type-it");
