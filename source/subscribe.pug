@@ -7,15 +7,15 @@ html(lang='en')
     link(rel='stylesheet', href='node_modules/normalize.css/normalize.css')
     link(rel="stylesheet", href="node_modules/@openfonts/merriweather_all/index.css")
     link(rel='stylesheet', href='css/styles.css')
-    include _favicon
+    include ./_favicon.pug
 
   body
     header
       h1 the code review
     main#subscribe
       h2 Welcome <?php echo $_POST["user_name"]; ?>
-      h3 We Will send your subscription to: 
-      span.user_email<?php echo $_POST["user_email"]; ?>
+      h3 We Will send your subscription to:
+      span.user_email <?php echo $_POST["user_email"]; ?>
       h3 Starting: <?php echo $_POST["subscription_start"]; ?>
 
 

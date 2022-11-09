@@ -7,7 +7,7 @@ html(lang="en")
     link(rel="stylesheet", href="node_modules/normalize.css/normalize.css")
     link(rel="stylesheet", href="node_modules/@openfonts/merriweather_all/index.css")
     link(rel="stylesheet", href="css/styles.css")
-    include _favicon
+    include ./_favicon.pug
     link(rel="stylesheet" href="node_modules/pickadate/lib/themes/default.css" )
     link(rel="stylesheet" href="node_modules/pickadate/lib/themes/default.date.css")
   body
@@ -110,8 +110,8 @@ html(lang="en")
               input.datepicker(type="text" name="subscription_start" id="subscription" readonly="" aria-haspopup="true" aria-expanded="true" data-value="today")
 
             .form-group
-              label(for="elite") Elite Code 
-                small 
+              label(for="elite") Elite Code
+                small
                   sup (This is if you know Anthony Veaudry)
               input(type="text" name="user_elite" id="elite" placeholder="AB1-CDEFG-23-45HI-J" data-parsley-trigger="change" data-parsley-pattern='[A-Z][A-Z]\\d\\-[A-Z][A-Z][A-Z][A-Z][A-Z]\\-\\d\\d\\-\\d\\d[A-Z][A-Z]\\-[A-Z]' data-inputmask="'mask': 'AA9-AAAAA-99-99AA-A'")
 

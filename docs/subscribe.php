@@ -31,7 +31,7 @@
     </header>
     <main id="subscribe">
       <h2>Welcome <?php echo $_POST["user_name"]; ?></h2>
-      <h3>We Will send your subscription to: </h3><span class="user_email"><?php echo $_POST["user_email"]; ?></span>
+      <h3>We Will send your subscription to:</h3><span class="user_email"><?php echo $_POST["user_email"]; ?></span>
       <h3>Starting: <?php echo $_POST["subscription_start"]; ?></h3>
     </main>
     <footer>Copyright The code Review</footer>
